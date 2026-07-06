@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function() {
+        var originalFetch = window.fetch;
+        var fetchValue = originalFetch;
+        try {
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return fetchValue || originalFetch;
+            },
+            set: function(val) {
+              fetchValue = val;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          try {
+            Object.defineProperty(Window.prototype, 'fetch', {
+              get: function() {
+                return fetchValue || originalFetch;
+              },
+              set: function(val) {
+                fetchValue = val;
+              },
+              configurable: true,
+              enumerable: true
+            });
+          } catch (e2) {
+            console.error("Failed to define fetch property:", e2);
+          }
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RF-VOID | MIT Sensing Laboratory</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

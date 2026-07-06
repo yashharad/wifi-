@@ -1,0 +1,6 @@
+{
+  "name": "RF-VOID",
+  "description": "Real-Time RF Occupancy Visualization, Object Identification & Dynamic Tracking",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
